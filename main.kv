@@ -1,0 +1,436 @@
+<ConfigWindow>:
+    name: 'config'
+
+    key: key
+    key_confirmation: key_confirmation
+
+    GridLayout:
+        cols: 1
+        size_hint: 0.8, 0.9
+        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+        spacing: 20
+
+        Label:
+            text: 'Configurazione iniziale'
+            font_size: '35sp'
+            halign: 'center'
+            color: (0.9, 0.9, 0.9, 1)
+            bold: True
+            size_hint: 1, 0.2
+            height: 1
+            text_size: self.width, None
+
+        Label:
+            text: 'Inserisci la chiave master'
+            font_size: '20sp'
+            bold: True
+            size_hint: 1, 0.15
+            text_size: self.width, None
+            height: self.texture_size[1]
+
+
+        GridLayout:
+            cols: 2
+            rows: 1
+            pos_hint: {'center_x': 0.5, 'center_y':0.5}
+            size_hint: 1, 0.15
+
+            TextInput:
+                id: key
+                multiline: False
+                password: True
+                size_hint: 0.8, 1
+
+            Button:
+                text: 'M/N'
+                size_hint: 0.2, 1
+                on_release:
+                    root.toggle1()
+
+        Label:
+            text: 'Ripeti la chiave'
+            font_size: '20sp'
+            bold: True
+            size_hint: 1, 0.15
+            text_size: self.width, None
+            height: self.texture_size[1]
+
+        GridLayout:
+            cols: 2
+            rows: 1
+            pos_hint: {'center_x': 0.5, 'center_y':0.5}
+            size_hint: 1, 0.15
+
+            TextInput:
+                id: key_confirmation
+                multiline: False
+                password: True
+                size_hint: 0.8, 1
+
+            Button:
+                text: 'M/N'
+                size_hint: 0.2, 1
+                on_release:
+                    root.toggle2()
+
+        Button:
+            text: 'Invia'
+            size_hint: 1, 0.15
+            font_size: '15sp'
+            height: 30
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release: 
+                root.config()
+
+<LoginWindow>:
+    name: 'login'
+
+    passw: passw
+
+    GridLayout:
+        cols: 1
+        size_hint: 0.8, 0.9
+        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+        spacing: 30
+        
+        Label:
+            text: 'Inserire la password'
+            halign: 'center'
+            font_size: '40sp'
+            size_hint: 1, 0.6
+            text_size: self.width, None
+            height: self.texture_size[1]
+            color: (0.9, 0.9, 0.9, 1)
+            bold: True
+
+
+        GridLayout:
+            cols: 2
+            rows: 1
+            pos_hint: {'center_x': 0.5, 'center_y':0.5}
+            size_hint: 1, 0.2
+
+            TextInput:
+                id: passw
+                multiline: False
+                password: True
+                size_hint: 0.8, 1
+
+            Button:
+                text: 'M/N'
+                size_hint: 0.2, 1
+                on_release:
+                    root.toggle()
+                    
+        Button:
+            text: 'Invia'
+            size_hint: 1, 0.2
+            on_release:
+                root.login()
+
+
+<MainWindow>:
+    name: 'main'
+
+    GridLayout:
+        cols: 1
+        size_hint: 0.8, 0.9
+        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+
+        Label:
+            text: 'Pass Encrypter'
+            font_size: '40sp'
+            halign: 'center'            
+            text_size: self.width, None
+            height: self.texture_size[1]
+            color: (0.9, 0.9, 0.9, 1)
+            bold: True
+
+        Button:
+            text: 'Leggi una password' 
+            size_hint: (1, 0.2)
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release: 
+                root.leggi_una_password()
+
+        Button:
+            text: 'Mostra tutte le password' 
+            size_hint: (1, 0.2)
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release:
+                root.mostra_password()
+
+        Button:
+            text: 'Modifica le password'
+            size_hint: (1, 0.2)
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release:
+                root.modifica_password()
+
+        Button:
+            text: 'Modifica la chiave primaria'
+            size_hint: (1, 0.2)
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release:
+                root.modifica_chiave()
+
+        Button:
+            text: "Esci dall'app"
+            size_hint: (1, 0.2)
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release:
+                root.chiudi()
+
+<LeggiUnaPassword>:
+    name: 'leggi_una_password'
+
+    program: program
+
+    GridLayout:
+        cols: 1
+        size_hint: 0.8, 0.9
+        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+        spacing: 20
+
+        Label:
+            text: 'Inserisci il nome del programma'
+            font_size: '40sp'
+            halign: 'center'
+            bold: True
+            size_hint: 1, 0.55
+            text_size: self.width, None
+            height: self.texture_size[1]
+
+        TextInput:
+            id: program
+            multiline: False
+            size_hint: 1, 0.15
+
+        Button:
+            text: 'Invia'
+            size_hint: 1, 0.15
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release: 
+                root.leggi_password()
+
+        Button:
+            text: 'Indietro'
+            size_hint: 1, 0.15
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release: 
+                root.to_main()
+
+
+<DisplayAll>:
+    name: 'display_all'
+
+    GridLayout: 
+        cols: 1
+        size_hint: 0.8, 0.9
+        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+
+        ScrollView:
+            id: scrollview
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 1, 0.7
+
+            Label:
+                id: zona_stampa
+                text: ''
+                size_hint_y: None
+                text_size: self.width, None
+                height: self.texture_size[1]
+
+
+        GridLayout:
+            cols: 2
+            rows: 1
+            size_hint: 1, 0.15
+            pos_hint: {'center_x': 0.5}
+
+            Button:
+                text: 'Indietro'
+                size_hint: 0.5, 1
+                font_size: '15sp'
+                background_color: (0.9, 0.9, 0.9, 1)
+                on_release:
+                    root.indietro()
+
+            Button:
+                text: 'Avanti'
+                size_hint: 0.5, 1
+                font_size: '15sp'
+                background_color: (0.9, 0.9, 0.9, 1)
+                on_release:
+                    root.avanti()
+        
+        Button:
+            text: 'Vai alla home'
+            size_hint: 1, 0.15
+            font_size: '15sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release:
+                root.to_main()
+
+<DisplayPass>:
+    name: 'display_pass'
+
+    GridLayout: 
+        cols: 1
+        size_hint: 0.8, 0.9
+        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+
+        ScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+
+            Label:
+                id: zona_stampa
+                text: ''
+                size_hint_y: None
+                text_size: self.width, None
+                height: self.texture_size[1]
+
+        Button:
+            text: 'Copia Password'
+            size_hint: 1, 0.15
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release:
+                root.copy_to_clipboard()
+
+        Button:
+            text: 'Indietro'
+            size_hint: 1, 0.15
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release:
+                root.to_main()
+
+<ModificaPassword>:
+    name: 'modifica_password'
+    
+    password: password
+
+    GridLayout:
+        cols: 1
+        size_hint: 0.8, 0.9
+        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+
+        ScrollView:
+            id: scrollview
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 1, 0.8
+
+            TextInput:
+                id: password
+                multiline: True
+                size_hint: 1, None
+                height: max( (len(self._lines)+1) * self.line_height, scrollview.height)
+
+        Button:
+            text: 'Conferma'
+            size_hint: 1, 0.1
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release: 
+                root.conferma()
+
+        Button:
+            text: 'Indietro'
+            size_hint: 1, 0.1
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release: 
+                root.to_main()
+
+<ModificaChiave>:
+    name: 'modifica_chiave'
+
+    key: key
+    key_confirmation: key_confirmation
+
+    GridLayout:
+        cols: 1
+        size_hint: 0.8, 0.9
+        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+        spacing: 20
+
+        Label:
+            text: 'Inserisci la nuova chiave'
+            font_size: '30sp'
+            bold: True
+            size_hint: 1, 0.2
+            text_size: self.width, None
+            height: self.texture_size[1]
+
+        GridLayout:
+            cols: 2
+            rows: 1
+            pos_hint: {'center_x': 0.5, 'center_y':0.5}
+            size_hint: 1, 0.15
+
+            TextInput:
+                id: key
+                multiline: False
+                password: True
+                size_hint: 0.8, 0.8
+
+            Button:
+                text: 'M/N'
+                size_hint: 0.2, 0.8
+                on_release:
+                    root.toggle1()
+
+        Label:
+            text: 'Ripeti la nuova chiave'
+            font_size: '30sp'
+            bold: True
+            size_hint: 1, 0.2
+            text_size: self.width, None
+            height: self.texture_size[1]
+
+        GridLayout:
+            cols: 2
+            rows: 1
+            pos_hint: {'center_x': 0.5, 'center_y':0.5}
+            size_hint: 1, 0.15
+
+            TextInput:
+                id: key_confirmation
+                multiline: False
+                password: True
+                size_hint: 0.8, 1
+
+            Button:
+                text: 'M/N'
+                size_hint: 0.2, 1
+                on_release:
+                    root.toggle2()
+
+        Button:
+            text: 'Invia'
+            size_hint: 1, 0.15
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release: 
+                root.modifica_chiave()
+
+        Button:
+            text: 'Indietro'
+            size_hint: 1, 0.15
+            font_size: '20sp'
+            background_color: (0.9, 0.9, 0.9, 1)
+            on_release: 
+                root.to_main()
+
+
